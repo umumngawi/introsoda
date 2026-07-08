@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SODA - Sistem Otomasi Dokumen yang Andal</title>
+    <style>
+        /* Pengaturan Warna dari Gambar */
+        :root {
+            --pink-utama: #C4607A;
+            --ungu-gelap: #2E1A47;
+            --pink-muda: #EBA1B4;
+            --bg-page: #FDF7F9; /* Warna latar belakang super soft pink */
+        }
+
+        /* Reset Dasar */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Pakai font bawaan HP/PC biar cepat loading */
+            font-family: system-ui, -apple-system, sans-serif; 
+            background: linear-gradient(135deg, var(--bg-page) 0%, var(--pink-muda) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Desain Kotak Utama (Card) */
+        .card {
+            background: #ffffff;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(46, 26, 71, 0.1); /* Bayangan pakai ungu gelap */
+            padding: 40px 30px;
+            text-align: center;
+            animation: munculBawah 0.8s ease-out; /* Animasi saat web dibuka */
+        }
+
+        /* Animasi */
+        @keyframes munculBawah {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: var(--ungu-gelap);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Desain Gambar */
+        .gambar-konten {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .gambar-konten:hover {
+            transform: scale(1.02); /* Efek membesar sedikit saat disentuh/kursor diarahkan */
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #4a4a4a;
+        }
+
+        /* Area Kontak */
+        .kontak {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--pink-muda);
+        }
+
+        .kontak p {
+            text-align: center;
+        }
+
+        /* Tombol Email (Tambahan Fitur) */
+        .tombol-email {
+            display: inline-block;
+            background-color: var(--pink-utama);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .tombol-email:hover {
+            background-color: var(--ungu-gelap);
+            transform: translateY(-3px);
+        }
+
+        .penutup {
+            margin-top: 25px;
+            font-weight: bold;
+            color: var(--pink-utama);
+            letter-spacing: 2px;
+        }
+
+        /* Penyesuaian untuk HP (Layar Kecil) */
+        @media (max-width: 480px) {
+            .card {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Kenalan dengan SODA yuk</h1>
+
+        <img src="https://lh3.googleusercontent.com/d/11eZGGPpAKLJMWuLqqcemlK4NlVjmyBnS" alt="Logo SODA" class="gambar-konten">
+
+        <p><strong>SODA (Sistem Otomasi Dokumen yang Andal)</strong> merupakan sebuah aplikasi berbasis web yang dirancang khusus untuk mendukung kegiatan administrasi persuratan di Bagian Umum Sekretariat Daerah Kabupaten Ngawi.</p>
+
+        <p>SODA memiliki 4 menu utama yaitu Surat Masuk, Surat Keluar, SPPD, dan ASKI. Dengan 4 menu tersebut, SODA mampu merapikan dan menyimpan surat-surat yang ada di Bagian Umum Sekretariat Daerah Kabupaten Ngawi.</p>
+
+        <img src="https://lh3.googleusercontent.com/d/1lW9CqrB_WTWg3Cv2U5vHlZSPemrnyZIP" alt="Tampilan SODA" class="gambar-konten">
+
+        <div class="kontak">
+            <p>Sekian Pengenalan singkat dari WebApp SODA. Apabila ada pertanyaan, kritik, maupun saran, silakan hubungi email berikut:</p>
+            <a href="mailto:umumngawi@gmail.com" class="tombol-email">✉️ umumngawi@gmail.com</a>
+        </div>
+
+        <div class="penutup">
+            TERIMA KASIH
+        </div>
+    </div>
+
+</body>
+</html>
