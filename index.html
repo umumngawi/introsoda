@@ -10,7 +10,7 @@
             --pink-utama: #C4607A;
             --ungu-gelap: #2E1A47;
             --pink-muda: #EBA1B4;
-            --bg-page: #FDF7F9; /* Warna latar belakang super soft pink */
+            --bg-page: #FDF7F9;
         }
 
         /* Reset Dasar */
@@ -21,8 +21,7 @@
         }
 
         body {
-            /* Pakai font bawaan HP/PC biar cepat loading */
-            font-family: system-ui, -apple-system, sans-serif; 
+            font-family: system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, var(--bg-page) 0%, var(--pink-muda) 100%);
             min-height: 100vh;
             display: flex;
@@ -33,19 +32,17 @@
             line-height: 1.6;
         }
 
-        /* Desain Kotak Utama (Card) */
         .card {
             background: #ffffff;
             max-width: 600px;
             width: 100%;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(46, 26, 71, 0.1); /* Bayangan pakai ungu gelap */
+            box-shadow: 0 10px 30px rgba(46, 26, 71, 0.1);
             padding: 40px 30px;
             text-align: center;
-            animation: munculBawah 0.8s ease-out; /* Animasi saat web dibuka */
+            animation: munculBawah 0.8s ease-out;
         }
 
-        /* Animasi */
         @keyframes munculBawah {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -57,19 +54,77 @@
             margin-bottom: 20px;
         }
 
-        /* Desain Gambar */
+        /* --- CSS Untuk Gambar Bisa Zoom --- */
+        /* Container Gambar */
+        .img-zoom-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        /* Style Gambar Asli */
         .gambar-konten {
             max-width: 100%;
             height: auto;
             border-radius: 12px;
-            margin: 20px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            cursor: zoom-in; /* Kursor berubah jadi kaca pembesar */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block; /* Menghilangkan celah bawah gambar */
         }
 
-        .gambar-konten:hover {
-            transform: scale(1.02); /* Efek membesar sedikit saat disentuh/kursor diarahkan */
+        /* Style Checkbox (Tersembunyi tapi berfungsi sebagai pemicu klik) */
+        .zoom-checkbox {
+            display: none;
         }
+
+        /* Teks petunjuk kecil (opsional) */
+        .petunjuk-zoom {
+            font-size: 0.8rem;
+            color: var(--pink-muda);
+            margin-top: -15px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* --- Efek Saat Gambar Diklik (Checkbox Tercentang) --- */
+        
+        /* 1. Gelapkan background layar */
+        .zoom-checkbox:checked ~ .overlay-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85); /* Hitam transparan */
+            z-index: 998; /* Di bawah gambar */
+            cursor: zoom-out; /* Kursor berubah jadi perkecil */
+            animation: fadeIn 0.3s;
+        }
+
+        /* 2. Posisikan gambar ke tengah layar dan perbesar */
+        .zoom-checkbox:checked + .img-zoom-container .gambar-konten {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.1); /* Sedikit lebih besar dari layar asli */
+            max-width: 95vw; /* Maksimal lebar layar */
+            max-height: 95vh; /* Maksimal tinggi layar */
+            z-index: 999; /* Paling atas */
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            cursor: zoom-out;
+        }
+
+        /* 3. Sembunyikan petunjuk saat zoom */
+        .zoom-checkbox:checked + .img-zoom-container .petunjuk-zoom {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* --- Akhir CSS Zoom --- */
 
         p {
             margin-bottom: 20px;
@@ -77,7 +132,6 @@
             color: #4a4a4a;
         }
 
-        /* Area Kontak */
         .kontak {
             margin-top: 30px;
             padding-top: 20px;
@@ -88,25 +142,24 @@
             text-align: center;
         }
 
-        /* Tombol Email (Tambahan Fitur) */
+        /* Tombol Email (Sudah diperbaiki display-nya) */
         .tombol-email {
-    display: inline-block; /* Ini penting supaya bisa diklik */
-    background-color: var(--pink-utama);
-    color: white;
-    text-decoration: none; /* Menghilangkan garis bawah link */
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: bold;
-    margin: 10px 0;
-    transition: background-color 0.3s, transform 0.2s;
-    cursor: pointer; /* Memastikan kursor berubah jadi tangan saat diarahkan */
-}
+            display: inline-block; /* PENTING: Agar bisa diklik penuh */
+            background-color: var(--pink-utama);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
 
-/* Pastikan saat di-hover tetap bisa diklik */
-.tombol-email:hover {
-    background-color: var(--ungu-gelap);
-    transform: translateY(-3px);
-}
+        .tombol-email:hover {
+            background-color: var(--ungu-gelap);
+            transform: translateY(-3px);
+        }
 
         .penutup {
             margin-top: 25px;
@@ -115,7 +168,6 @@
             letter-spacing: 2px;
         }
 
-        /* Penyesuaian untuk HP (Layar Kecil) */
         @media (max-width: 480px) {
             .card {
                 padding: 25px 20px;
@@ -131,15 +183,19 @@
     <div class="card">
         <h1>Kenalan dengan SODA yuk</h1>
 
-        <img src="https://lh3.googleusercontent.com/d/11eZGGPpAKLJMWuLqqcemlK4NlVjmyBnS" alt="Logo SODA" class="gambar-konten">
-
-        <p><strong>SODA (Sistem Otomasi Dokumen yang Andal)</strong> merupakan sebuah aplikasi berbasis web yang dirancang khusus untuk mendukung kegiatan administrasi persuratan di Bagian Umum Sekretariat Daerah Kabupaten Ngawi.</p>
+        <input type="checkbox" id="zoom1" class="zoom-checkbox"> <label for="zoom1" class="img-zoom-container">
+            <img src="https://lh3.googleusercontent.com/d/11eZGGPpAKLJMWuLqqcemlK4NlVjmyBnS" alt="Logo SODA" class="gambar-konten">
+            <span class="petunjuk-zoom">Klik untuk memperbesar</span>
+        </label>
+        <label for="zoom1" class="overlay-bg"></label> <p><strong>SODA (Sistem Otomasi Dokumen yang Andal)</strong> merupakan sebuah aplikasi berbasis web yang dirancang khusus untuk mendukung kegiatan administrasi persuratan di Bagian Umum Sekretariat Daerah Kabupaten Ngawi.</p>
 
         <p>SODA memiliki 4 menu utama yaitu Surat Masuk, Surat Keluar, SPPD, dan ASKI. Dengan 4 menu tersebut, SODA mampu merapikan dan menyimpan surat-surat yang ada di Bagian Umum Sekretariat Daerah Kabupaten Ngawi.</p>
 
-        <img src="https://lh3.googleusercontent.com/d/1lW9CqrB_WTWg3Cv2U5vHlZSPemrnyZIP" alt="Tampilan SODA" class="gambar-konten">
-
-        <div class="kontak">
+        <input type="checkbox" id="zoom2" class="zoom-checkbox"> <label for="zoom2" class="img-zoom-container">
+            <img src="https://lh3.googleusercontent.com/d/1lW9CqrB_WTWg3Cv2U5vHlZSPemrnyZIP" alt="Tampilan SODA" class="gambar-konten">
+            <span class="petunjuk-zoom">Klik untuk memperbesar</span>
+        </label>
+        <label for="zoom2" class="overlay-bg"></label> <div class="kontak">
             <p>Sekian Pengenalan singkat dari WebApp SODA. Apabila ada pertanyaan, kritik, maupun saran, silakan hubungi email berikut:</p>
             <a href="mailto:umumngawi@gmail.com" class="tombol-email">✉️ umumngawi@gmail.com</a>
         </div>
