@@ -90,21 +90,23 @@
 
         /* Tombol Email (Tambahan Fitur) */
         .tombol-email {
-            display: inline-block;
-            background-color: var(--pink-utama);
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-weight: bold;
-            margin: 10px 0;
-            transition: background-color 0.3s, transform 0.2s;
-        }
+    display: inline-block; /* Ini penting supaya bisa diklik */
+    background-color: var(--pink-utama);
+    color: white;
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer; /* Memastikan kursor berubah jadi tangan saat diarahkan */
+}
 
-        .tombol-email:hover {
-            background-color: var(--ungu-gelap);
-            transform: translateY(-3px);
-        }
+/* Pastikan saat di-hover tetap bisa diklik */
+.tombol-email:hover {
+    background-color: var(--ungu-gelap);
+    transform: translateY(-3px);
+}
 
         .penutup {
             margin-top: 25px;
